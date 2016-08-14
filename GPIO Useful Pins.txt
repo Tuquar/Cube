@@ -1,6 +1,21 @@
 Useful Pins:
 
+REMEMBER - PIN LOCATION != GPIO ADDRESS
+8x8x8 Led cube (using serial output - NOT multiplexing)
+
+
 GPIO:
 7, 11, 12, 13, 15, 16, 18, 22, 29, 31, 32, 33, 36, 37
 Ground:
 6, 9, 14, 20, 25, 30, 34, 39
+
+
+
+Planned use of 12 pins by GPIO label = [15, 16, 18, 29, 31, 32, 33, 35, 36, 37, 38, 40]
+
+
+
+Useful links:
+http://www.hertaville.com/introduction-to-accessing-the-raspberry-pis-gpio-in-c.html
+http://elinux.org/RPi_Low-level_peripherals#Model_A.2B.2C_B.2B_and_B2
+https://projects.drogon.net/raspberry-pi/wiringpi/pins/
