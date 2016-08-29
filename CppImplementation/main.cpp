@@ -12,6 +12,7 @@ void main()
 
     for (int count = 0; count < (sizeof PinArray / sizeof PinArray[0]); count++){
         GPIOPinArray[count].SetGPIONumber(PinArray[count]);
+        GPIOPinArray[count].SetGPIODirection("out");
 
         cout << GPIOPinArray[count].GetGPIONumber() << " C-" << count << endl;
     }
