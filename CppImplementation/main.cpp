@@ -15,6 +15,7 @@ int main()
         GPIOPinArray[count].SetGPIODirection("out");
 
         cout << GPIOPinArray[count].GetGPIONumber() << " C-" << count << endl << endl;
+        usleep(1000000);
     }
 
     return 0;
