@@ -6,7 +6,7 @@ using namespace std;
 int PinArray [12] = {15, 16, 18, 29, 31, 32, 33, 35, 36, 37, 38, 40};
 GPIOControl GPIOPinArray [12];
 
-void main()
+int main()
 {
     cout << "Hello World! :)" << endl;
 
@@ -14,7 +14,8 @@ void main()
         GPIOPinArray[count].SetGPIONumber(PinArray[count]);
         GPIOPinArray[count].SetGPIODirection("out");
 
-        cout << GPIOPinArray[count].GetGPIONumber() << " C-" << count << endl;
+        cout << GPIOPinArray[count].GetGPIONumber() << " C-" << count << endl << endl;
     }
 
+    return 0;
 };

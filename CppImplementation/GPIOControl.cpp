@@ -1,5 +1,7 @@
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <sstream>
 #include "GPIOControl.h"
 
 //using namespace Cube;
@@ -17,8 +19,8 @@ using namespace std;
 
     GPIOControl::GPIOControl(int GPIONumber, string GPIODirection)
     {
-        SetGPIODirection(GPIODirection);
         SetGPIONumber(GPIONumber);
+        SetGPIODirection(GPIODirection);
     }
 
     GPIOControl::~GPIOControl()
@@ -27,20 +29,26 @@ using namespace std;
     }
 
     void GPIOControl::SetOutValue(bool GPIOutValue){
-        //TODO: Doesn't do anything, needs to edit files
-        OutValue = GPIOutValue;
+        //TODO: Return integer to confirm value is set
+        std::stringstream ValuePathSS;
+        string ValuePath;
         string OutValueStr;
 
+        OutValue = GPIOutValue;
+        
         if (GPIOutValue == true){
             OutValueStr = "1";
         } else {
             OutValueStr = "0";
         }
 
-        //cout << "Changing value of pin: " << Number << endl;
+        ValuePathSS << "/sys/class/gpio/gpio" << Number << "/value";
+        ValuePath = ValuePathSS.str();
+        //cout << "Changing value of pin: " << Number << eDirectionPathndl;
         // TODO: Should we close the file reader or leave it open for the duration of the pins use?
+        // Adding to that, we can also store the path rather than building it each time
         ofstream valueFile;
-        valueFile.open("/sys/class/gpio/gpio" << Number << "/value");
+        valueFile.open(ValuePath.c_str());
         valueFile << OutValueStr;
         valueFile.close();
         cout << "Pin " << Number << " changed to " << OutValueStr << endl;
@@ -66,14 +74,22 @@ using namespace std;
     }
 
     void GPIOControl::SetGPIODirection(string GPIODirection){
+        std::stringstream DirectionPathSS;
+        string DirectionPath;
+
         if (GPIODirection != "out") {
             GPIODirection = "in";
         }
         Direction = GPIODirection;
+        
+        // HACK: This string manipluation could possibly be made quicker
+        DirectionPathSS << "/sys/class/gpio/gpio" << Number << "/direction";
+        DirectionPath = DirectionPathSS.str();
 
         cout << "Setting pin " << " direction: " << GPIODirection << endl;
+        cout << DirectionPath << endl;
         ofstream directionFile;
-        directionFile.open("/sys/class/gpio/gpio" << Number << "/direction");
+        directionFile.open(DirectionPath.c_str());
         directionFile << GPIODirection;
         directionFile.close();
         cout << "Direction of pin " << Number << " set to " << GPIODirection << endl;

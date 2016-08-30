@@ -1,3 +1,6 @@
 JS Implementation/node_modules
 CppImplementation/*.obj
 CppImplementation/*.exe
+CppImplementation/*.out
+CppImplementation/.vscode/
+.vscode/
