@@ -35,7 +35,7 @@ using namespace std;
         string OutValueStr;
 
         OutValue = GPIOutValue;
-        
+
         if (GPIOutValue == true){
             OutValueStr = "1";
         } else {
@@ -81,7 +81,7 @@ using namespace std;
             GPIODirection = "in";
         }
         Direction = GPIODirection;
-        
+
         // HACK: This string manipluation could possibly be made quicker
         DirectionPathSS << "/sys/class/gpio/gpio" << Number << "/direction";
         DirectionPath = DirectionPathSS.str();
@@ -105,5 +105,5 @@ using namespace std;
         unexportFile << Number;
         unexportFile.close();
         cout << "Pin " << Number << " Unexported!" << endl;
-
+        usleep(1000000);
     }
