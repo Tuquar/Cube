@@ -8,8 +8,6 @@ GPIOControl GPIOPinArray [12];
 
 int main()
 {
-    cout << "Hello World! :)" << endl;
-
     for (int count = 0; count < (sizeof PinArray / sizeof PinArray[0]); count++){
         GPIOPinArray[count].SetGPIONumber(PinArray[count]);
         GPIOPinArray[count].SetGPIODirection("out");

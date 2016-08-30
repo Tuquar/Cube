@@ -60,6 +60,7 @@ using namespace std;
     void GPIOControl::SetGPIONumber(int GPIONumber){
         Number = GPIONumber;
         // TODO: Better checks needed here? If the number is changed part way through the program what will happen?
+        // TODO: Check if pin is already exported
         if (GPIONumber > 0){
             cout << "Exporting pin: " << Number << endl;
             ofstream exportFile;
